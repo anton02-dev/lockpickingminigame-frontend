@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.game-container {
+    width: 400px;
+    background: linear-gradient(145deg, #2a2a2a, #333);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.lock {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, #333, #2a2a2a);
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.pin {
+    width: 40px;
+    height: 100px;
+    background: linear-gradient(to bottom, #555, #444);
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.pin:hover {
+    background: linear-gradient(to bottom, #666, #555);
+    transform: scale(1.05);
+}
+
+.pin.correct {
+    background: linear-gradient(to bottom, #5cb85c, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+}
+
+.pin.wrong {
+    background: linear-gradient(to bottom, #d9534f, #c9302c);
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+.timer {
+    font-size: 24px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 5px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    transition: color 0.3s;
+}
+
+.timer.warning {
+    color: #f0ad4e;
+}
+
+.timer.danger {
+    color: #d9534f;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+button {
+    background: linear-gradient(to bottom, #4CAF50, #45a049);
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 16px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.controls {
+    text-align: center;
+}
+
+#message {
+    margin-top: 10px;
+    text-align: center;
+    min-height: 20px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.success-message {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+.fail-message {
+    background: rgba(217, 83, 79, 0.2);
+    color: #d9534f;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkle 0.8s linear forwards;
+}
+
+@keyframes sparkle {
+    0% { transform: translate(0, 0) scale(0); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+}
